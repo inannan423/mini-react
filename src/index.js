@@ -16,7 +16,36 @@ const virtualDOM = (
     </div>
 );
 
-MiniReact.render(virtualDOM, root);
+// MiniReact.render(virtualDOM, root);
 
+// const Demo = () => {
+//     return (
+//         <div>
+//             <h1>Mini React</h1>
+//         </div>
+//     )
+// }
+//
+// const Hello = (props) => {
+//     return <div>
+//         <h1>{props.title}</h1>
+//         <Demo />
+//     </div>
+// }
 
-console.log(virtualDOM);
+// MiniReact.render(<Hello title="Hello" />, root);
+
+class Nihao extends MiniReact.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return <div>
+            <h1>
+                {this.props.title}
+            </h1>
+        </div>
+    }
+}
+
+MiniReact.render(<Nihao title="你好呀！" />, root);
