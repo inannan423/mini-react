@@ -50,33 +50,57 @@ const virtualDOM = (
 //
 // MiniReact.render(<Nihao title="你好呀！" />, root);
 
-const vdom = (
-    <div className="container">
-        <h1 data-title="hello">你好</h1>
-        <span>Mini React</span>
-        <button onClick={() => alert('Hi')}>Click me</button>
-        <h1>1</h1>
-    </div>
-);
+// const vdom = (
+//     <div className="container">
+//         <h1 data-title="hello">你好</h1>
+//         <span>Mini React</span>
+//         <button onClick={() => alert('Hi')}>Click me</button>
+//         <h1>1</h1>
+//     </div>
+// );
+//
+// const modifiedVdom = (
+//     <div className="container">
+//         <h3 data-title="world">你好</h3>
+//         <input type="text" value="Hi" />
+//         <button onClick={() => alert('你好')}>Click me</button>
+//     </div>
+// );
+//
+// const vdom1 = (
+//     <div className="container">
+//         <h1 data-title="hello">你好</h1>
+//         <span>Mini React</span>
+//         <button onClick={() => alert('Hi')}>Click me</button>
+//     </div>
+// );
+//
+// MiniReact.render(vdom, document.getElementById('root'));
+//
+// setTimeout(() => {
+//     MiniReact.render(vdom1, document.getElementById('root'));
+// }, 3000);
 
-const modifiedVdom = (
-    <div className="container">
-        <h3 data-title="world">你好</h3>
-        <input type="text" value="Hi" />
-        <button onClick={() => alert('你好')}>Click me</button>
-    </div>
-);
+class Nihao extends MiniReact.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: '你好'
+        }
+    }
+    render() {
+        console.log('State Changed: ', this.state)
+        return <div>
+            <h1>
+                {this.state.title}
+            </h1>
+            <button onClick={() => {
+                this.setState({
+                    title: '你好啊'
+                })
+            }}>改变标题</button>
+        </div>
+    }
+}
 
-const vdom1 = (
-    <div className="container">
-        <h1 data-title="hello">你好</h1>
-        <span>Mini React</span>
-        <button onClick={() => alert('Hi')}>Click me</button>
-    </div>
-);
-
-MiniReact.render(vdom, document.getElementById('root'));
-
-setTimeout(() => {
-    MiniReact.render(vdom1, document.getElementById('root'));
-}, 3000);
+MiniReact.render(<Nihao />, root);
