@@ -12,6 +12,10 @@ export default function mountNativeElement(virtualDOM) {
         // 为元素添加属性
         updateNodeElement(newElement, virtualDOM);
     }
+
+    // 存储旧的虚拟DOM
+    newElement._virtualDOM = virtualDOM;
+
     // 递归地渲染子节点
     virtualDOM.children.forEach(child => mountElement(child, newElement));
     return newElement;
